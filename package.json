@@ -1,0 +1,12 @@
+{
+  "name": "ma-caisse",
+  "private": true,
+  "description": "Offline shop management PWA — no build step, no dependencies.",
+  "scripts": {
+    "test": "node --test tests/unit.test.mjs",
+    "test:e2e": "node --test --test-timeout=240000 tests/e2e.test.mjs",
+    "test:all": "node --test --test-timeout=240000 \"tests/*.test.mjs\"",
+    "serve": "python3 -m http.server 8765"
+  },
+  "engines": { "node": ">=20" }
+}

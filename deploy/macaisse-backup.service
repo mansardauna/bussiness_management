@@ -1,0 +1,30 @@
+[Unit]
+Description=Ma Caisse encrypted backup server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=macaisse
+Group=macaisse
+Environment=PORT=8787 HOST=127.0.0.1 DATA_DIR=/var/lib/macaisse-backup BACKUP_TOKENS_FILE=/etc/macaisse-backup/shops.txt IFB_FILE=/etc/macaisse-backup/ifb.json KEEP=30 MAX_MB=80
+EnvironmentFile=-/etc/macaisse-backup/server.env
+ExecStart=__NODE__ /opt/macaisse-backup/backup-server.mjs
+Restart=always
+RestartSec=3
+# Hardening: the service can only write its data folder.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ReadWritePaths=/var/lib/macaisse-backup
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

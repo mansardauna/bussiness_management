@@ -1,0 +1,39 @@
+# Ma Caisse — app + backup server on one HTTPS address. Caddy gets the certificate by itself.
+# __DOMAIN__ is replaced by setup-vps.sh. Installed as /etc/caddy/sites/macaisse.caddy
+__DOMAIN__ {
+	encode zstd gzip
+
+	@api path /backup /health /ifb/*
+	handle @api {
+		request_body {
+			max_size 80MB
+		}
+		reverse_proxy 127.0.0.1:8787
+	}
+
+	handle {
+		root * /var/www/macaisse
+		file_server
+	}
+
+	# Always check for a new version of the app shell (the service worker handles offline).
+	header /sw.js Cache-Control "no-cache"
+	header / Cache-Control "no-cache"
+	header /index.html Cache-Control "no-cache"
+	header /manifest.webmanifest Content-Type "application/manifest+json"
+	header /.well-known/assetlinks.json Content-Type "application/json"
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+		X-Frame-Options "DENY"
+		-Server
+	}
+
+	log {
+		output file /var/log/caddy/macaisse.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}

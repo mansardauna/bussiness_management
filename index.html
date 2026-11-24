@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Offline shop management: cash book, sales, credits, stock, packaging, staff, reports. English, French, Spanish.">
+<title>Ma Caisse</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="lock" class="lock" hidden></div>
+
+<aside class="side" id="side" aria-label="Main navigation">
+  <a class="brand" href="#/dash"><span class="logo" id="logo"></span><span>Ma Caisse</span></a>
+  <nav class="nav" id="sidenav"></nav>
+  <div class="promo" id="promo"></div>
+</aside>
+<div class="scrim" data-act="closeSide"></div>
+
+<div class="main">
+  <header class="topbar">
+    <button class="ib only-m" data-act="openSide" aria-label="Menu" id="menuBtn"></button>
+    <div class="tb-brand only-m" id="tbBrand"></div>
+    <div class="search" id="searchBox">
+      <span id="searchIcon"></span>
+      <input id="gsearch" type="search" placeholder="Search a product, customer, receipt…" autocomplete="off">
+      <div class="sres" id="sres"></div>
+    </div>
+    <div class="tb-right">
+      <span class="net" id="net"></span>
+      <label class="lang"><span id="langIc"></span><select id="langSel" data-chg="lang" aria-label="Language"></select></label>
+      <button class="ib" data-act="lockNow" aria-label="Lock" id="lockBtn" hidden></button>
+      <button class="ib" data-act="showAlerts" aria-label="Alerts" id="bellBtn"></button>
+      <div class="profw"><button class="prof" id="prof" data-act="profMenu" aria-haspopup="menu" aria-expanded="false"></button><div class="pmenu" id="pmenu" role="menu"></div></div>
+    </div>
+  </header>
+  <main id="view" class="view"></main>
+</div>
+
+<nav class="bnav" id="bnav" aria-label="Quick navigation"></nav>
+<div id="modal" class="modal"></div>
+<div id="toast" class="toast" role="status"></div>
+<div id="print" class="print-area"></div>
+<datalist id="dl-clients"></datalist>
+<script src="i18n.js"></script>
+<script src="core.js"></script>
+<script src="notify-core.js"></script>
+<script src="qr.js"></script>
+<script src="security.js"></script>
+<script src="cloud.js"></script>
+<script src="print.js"></script>
+<script src="ifb.js"></script>
+<script src="auto.js"></script>
+<script src="roles.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

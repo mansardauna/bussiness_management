@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Ma Caisse – Shop management",
+  "short_name": "Ma Caisse",
+  "description": "Cash book, sales, credits, stock, packaging, staff and reports. Works without internet. English, French, Spanish.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./index.html#/dash",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5F6FA",
+  "theme_color": "#5B5BD6",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
